@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Avani Singh — Business & Operations Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #0d1117;
+    --ink-soft: #1a2232;
+    --ink-mid: #243044;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-dim: #8a6e2f;
+    --slate: #8b97aa;
+    --text: #e8ecf2;
+    --text-muted: #8b97aa;
+    --text-dim: #5a6478;
+    --rule: rgba(201,168,76,0.18);
+    --card-bg: rgba(26,34,50,0.6);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  /* ── BACKGROUND GRADIENT ── */
+  body::after {
+    content: '';
+    position: fixed;
+    top: -30%;
+    right: -20%;
+    width: 70vw;
+    height: 70vw;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.04) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 4rem;
+    background: rgba(13,17,23,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold-light); }
+
+  /* ── SECTIONS ── */
+  section {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 4rem;
+    position: relative;
+  }
+
+  .hero-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    font-weight: 300;
+    color: var(--text-muted);
+    margin-top: 1.2rem;
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-description {
+    max-width: 560px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 2rem;
+    background: var(--gold);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 2rem;
+    border: 1px solid var(--rule);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: border-color 0.3s, color 0.3s;
+  }
+
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--rule);
+    flex-wrap: wrap;
+  }
+
+  .stat-item {}
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem;
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-top: 0.3rem;
+    display: block;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+    padding-top: 6rem;
+  }
+
+  .section-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    color: var(--gold-dim);
+    letter-spacing: 0.1em;
+    min-width: 30px;
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+  }
+
+  h2 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .section-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    align-self: center;
+    margin-left: 1rem;
+  }
+
+  /* ── IMPACT METRICS ── */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    margin-bottom: 1px;
+  }
+
+  .metric-card {
+    background: var(--card-bg);
+    padding: 2.2rem 2rem;
+    backdrop-filter: blur(8px);
+    transition: background 0.3s;
+  }
+
+  .metric-card:hover { background: rgba(201,168,76,0.06); }
+
+  .metric-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .metric-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+  }
+
+  /* ── EXPERIENCE ── */
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 2rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .exp-item:last-child { border-bottom: none; }
+
+  .exp-meta {}
+
+  .exp-company {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .exp-period {
+    font-size: 0.73rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    display: block;
+  }
+
+  .exp-location {
+    font-size: 0.73rem;
+    color: var(--text-dim);
+    margin-top: 0.2rem;
+    display: block;
+  }
+
+  .exp-content {}
+
+  .exp-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .exp-role span {
+    display: block;
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: 0.15rem;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .exp-bullets li {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    padding-left: 1.2rem;
+    position: relative;
+  }
+
+  .exp-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold-dim);
+    font-size: 0.7rem;
+    top: 0.2rem;
+  }
+
+  .exp-bullets li strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-group {
+    padding: 2rem;
+    border: 1px solid var(--rule);
+    background: var(--card-bg);
+    backdrop-filter: blur(8px);
+    transition: border-color 0.3s;
+  }
+
+  .skill-group:hover { border-color: var(--gold-dim); }
+
+  .skill-group-title {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .skill-group-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    padding: 0.3rem 0.8rem;
+    border: 1px solid rgba(139,151,170,0.2);
+    letter-spacing: 0.04em;
+    transition: all 0.2s;
+  }
+
+  .skill-tag:hover {
+    border-color: var(--gold-dim);
+    color: var(--gold-light);
+  }
+
+  /* ── CERTS ── */
+  .certs-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .cert-card {
+    padding: 2rem 2.2rem;
+    border: 1px solid var(--rule);
+    background: var(--card-bg);
+    display: flex;
+    align-items: flex-start;
+    gap: 1.4rem;
+    transition: border-color 0.3s;
+    backdrop-filter: blur(8px);
+  }
+
+  .cert-card:hover { border-color: var(--gold-dim); }
+
+  .cert-badge-img {
+    width: 72px;
+    height: 72px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cert-badge-img img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+  }
+
+  .cert-badge-icon {
+    font-size: 2rem;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+    color: var(--gold);
+    width: 40px;
+  }
+
+  .cert-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .cert-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .cert-level-badge {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--gold);
+    padding: 0.15rem 0.55rem;
+    font-weight: 500;
+    vertical-align: middle;
+  }
+
+  .cert-org {
+    font-size: 0.78rem;
+    color: var(--gold-dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+  }
+
+  .cert-meta {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-bottom: 0.15rem;
+  }
+
+  .cert-id {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    font-family: monospace;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.8rem;
+  }
+
+  .cert-actions {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-top: 0.8rem;
+  }
+
+  .cert-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 1rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.25s;
+  }
+
+  .cert-btn svg {
+    width: 11px;
+    height: 11px;
+    flex-shrink: 0;
+  }
+
+  .cert-btn-primary {
+    background: rgba(201,168,76,0.1);
+    border: 1px solid var(--gold-dim);
+    color: var(--gold-light);
+  }
+
+  .cert-btn-primary:hover {
+    background: rgba(201,168,76,0.2);
+    border-color: var(--gold);
+  }
+
+  .cert-btn-ghost {
+    border: 1px solid rgba(139,151,170,0.25);
+    color: var(--text-muted);
+  }
+
+  .cert-btn-ghost:hover {
+    border-color: var(--gold-dim);
+    color: var(--gold-light);
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background: var(--rule);
+  }
+
+  .project-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(8px);
+    padding: 2.8rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 3rem;
+    align-items: start;
+    transition: background 0.3s;
+  }
+
+  .project-card:hover { background: rgba(201,168,76,0.05); }
+
+  .project-tag-row {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+
+  .project-tag {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 0.2rem 0.7rem;
+  }
+
+  .project-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+  }
+
+  .project-desc {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 1.4rem;
+    max-width: 560px;
+  }
+
+  .project-outcomes {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .project-outcomes li {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .project-outcomes li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--gold-dim);
+    font-size: 0.7rem;
+  }
+
+  .project-outcomes li strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .project-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--rule);
+  }
+
+  .proj-metric {
+    background: rgba(13,17,23,0.7);
+    padding: 1.1rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .proj-metric-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.2rem;
+  }
+
+  .proj-metric-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .project-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1.2rem;
+  }
+
+  .project-tool-tag {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    border: 1px solid rgba(90,100,120,0.3);
+    padding: 0.2rem 0.65rem;
+    letter-spacing: 0.04em;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1.4rem;
+    flex-wrap: wrap;
+  }
+
+  .project-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1.2rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+  }
+
+  .project-link-btn.primary {
+    background: rgba(201,168,76,0.12);
+    border: 1px solid var(--gold-dim);
+    color: var(--gold-light);
+  }
+
+  .project-link-btn.primary:hover {
+    background: rgba(201,168,76,0.22);
+    border-color: var(--gold);
+    color: var(--gold-light);
+  }
+
+  .project-link-btn.secondary {
+    border: 1px solid rgba(139,151,170,0.25);
+    color: var(--text-muted);
+  }
+
+  .project-link-btn.secondary:hover {
+    border-color: var(--gold-dim);
+    color: var(--gold-light);
+  }
+
+  .project-link-btn svg {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .project-card {
+      grid-template-columns: 1fr;
+      padding: 2rem 1.5rem;
+    }
+    .project-metrics {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    .proj-metric { flex: 1; min-width: 120px; }
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    padding-bottom: 8rem;
+  }
+
+  .contact-inner {
+    padding: 4rem;
+    border: 1px solid var(--rule);
+    background: var(--card-bg);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .contact-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 300;
+    line-height: 1.2;
+    max-width: 400px;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.88rem;
+    transition: color 0.3s;
+  }
+
+  .contact-link:hover { color: var(--gold-light); }
+
+  .contact-link-icon {
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: var(--gold-dim);
+    flex-shrink: 0;
+    transition: border-color 0.3s;
+  }
+
+  .contact-link:hover .contact-link-icon {
+    border-color: var(--gold-dim);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--rule);
+    padding: 1.8rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  footer p {
+    font-size: 0.73rem;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tag { animation: fadeUp 0.8s ease both; }
+  h1 { animation: fadeUp 0.8s 0.15s ease both; }
+  .hero-subtitle { animation: fadeUp 0.8s 0.25s ease both; }
+  .hero-description { animation: fadeUp 0.8s 0.35s ease both; }
+  .hero-cta { animation: fadeUp 0.8s 0.45s ease both; }
+  .hero-stats { animation: fadeUp 0.8s 0.55s ease both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero-inner { padding: 0 1.5rem; }
+    section { padding: 0 1.5rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .exp-meta { display: flex; gap: 1.5rem; align-items: baseline; flex-wrap: wrap; }
+    .contact-inner { padding: 2rem; flex-direction: column; }
+    footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">Avani Singh</a>
+  <ul class="nav-links">
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#credentials">Credentials</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Business &amp; Operations Analyst</div>
+    <h1>Avani <em>Singh</em></h1>
+    <p class="hero-subtitle">Transforming complexity into clarity — across fintech, mortgage, and financial services.</p>
+    <p class="hero-description">
+      7+ years driving process improvement, operational efficiency, and data-informed decision-making in high-velocity financial environments. Certified Scrum Master &amp; Six Sigma Green Belt.
+    </p>
+    <div class="hero-cta">
+      <a href="#experience" class="btn-primary">View My Work ↓</a>
+      <a href="/cdn-cgi/l/email-protection#ccadbaada2a5bfa5a2aba4fef88caba1ada5a0e2afa3a1" class="btn-ghost">Get In Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-number">7+</span>
+        <span class="stat-label">Years in Financial Services</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">1,200+</span>
+        <span class="stat-label">Labor Hours Reclaimed</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">35%</span>
+        <span class="stat-label">Reduction in Production Defects</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">500+</span>
+        <span class="stat-label">Mortgage Closings Managed</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- IMPACT METRICS -->
+<section id="impact">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2>Quantified <em>Impact</em></h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <span class="metric-value">40%</span>
+      <span class="metric-desc">Reduction in analysis time by replacing manual Excel reporting with Power BI dashboards powered by SQL datasets</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-value">25%</span>
+      <span class="metric-desc">Improvement in reporting accuracy through SQL-driven data validation and reconciliation of transaction outputs</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-value">20%</span>
+      <span class="metric-desc">Cut in reporting cycle time and accelerated issue-resolution through Power BI executive dashboards and Scrum-based workflows</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-value">15%</span>
+      <span class="metric-desc">Reduction in compliance audit findings through standardized process documentation and user story management in ServiceNow</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-value">30%</span>
+      <span class="metric-desc">Decrease in processing and funding cycle times by leading Agile workflow automation across underwriting, title, and closing</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-value">50%</span>
+      <span class="metric-desc">Faster escalation resolution at Newport Group through root cause analysis and redesigned payroll/distribution procedures</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2>Work <em>Experience</em></h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="experience-list">
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <span class="exp-company">Golden 1 CU</span>
+        <span class="exp-period">Mar 2025 – Present</span>
+        <span class="exp-location">Remote</span>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">
+          Senior Business &amp; Operations Analyst
+          <span>Previously: Business &amp; Operations Analyst (May 2023)</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Influenced 2026 operational roadmap by securing executive approval from VP of Operations and Director of Risk, presenting findings across <strong>17 identified inefficiencies</strong> and <strong>1,200+ reclaimed labor hours</strong> using Six Sigma analysis.</li>
+          <li>Built <strong>Power BI executive dashboards</strong> using SQL-based datasets with relational joins, cutting reporting cycle time by 20% and delivering real-time KPI visibility to leadership.</li>
+          <li>Reduced compliance audit findings by <strong>15%</strong> and accelerated issue-resolution by 20% by translating business requirements into standardized processes in ServiceNow using Scrum methodologies.</li>
+          <li>Led UAT strategy across several banking platforms, authoring <strong>300+ test scripts</strong> and managing full defect lifecycle in Jira, cutting Sev 1–2 production defects by 35%.</li>
+          <li>Used Microsoft SQL Server to perform data validation and reconcile transaction outputs, identifying critical data gaps that improved reporting accuracy by <strong>25%</strong>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <span class="exp-company">Splitero</span>
+        <span class="exp-period">Jul 2022 – Mar 2023</span>
+        <span class="exp-location">Remote</span>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Operations Analyst — Mortgage Closing</div>
+        <ul class="exp-bullets">
+          <li>Managed <strong>500+ regulated mortgage closings</strong>, applying root cause analysis to resolve bottlenecks across title and escrow teams, maintaining an 85% successful close rate.</li>
+          <li>Strengthened closing controls via standardized process maps and compliance checkpoints, maintaining <strong>97% documentation accuracy</strong>.</li>
+          <li>Designed and deployed <strong>Salesforce workflow automation</strong> for a 500+ user organization, driving a 10% increase in sales productivity through enhanced lead conversion tracking.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <span class="exp-company">Better Mortgage</span>
+        <span class="exp-period">Sep 2020 – Apr 2022</span>
+        <span class="exp-location">Remote</span>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">
+          Operations Analyst
+          <span>Previously: Processing Analyst (Sep 2020)</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Managed <strong>150+ investor projects in Jira</strong>, reducing deal timelines by 25% and increasing closing rates from 70% to 90%+.</li>
+          <li>Led Agile workflow automation across underwriting, title, and closing for 50+ stakeholders, reducing processing and funding cycle times by <strong>30%</strong>.</li>
+          <li>Introduced pre-underwriting checkpoints aligned to Fannie Mae/Freddie Mac guidelines, expediting clear-to-close by <strong>15 days</strong> and improving on-time milestone achievement by 25%.</li>
+          <li>Implemented workflow tracking and documentation audits, driving a <strong>20% rise in first-pass underwriting approvals</strong> through root cause analysis.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <span class="exp-company">Ace Properties</span>
+        <span class="exp-period">Sep 2019 – Jun 2020</span>
+        <span class="exp-location">Sacramento, CA</span>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Operations Coordinator</div>
+        <ul class="exp-bullets">
+          <li>Standardized multi-party transaction workflows using Trello, achieving an <strong>85% closing rate</strong> and reducing deal cycles from 45 to 30 days.</li>
+          <li>Analyzed marketing and product KPIs using advanced Excel dashboards, exceeding website traffic targets by 30% and improving lead conversion rates by <strong>20%</strong>.</li>
+          <li>Drove a <strong>25% revenue increase</strong> through structured process improvement and regulatory compliance in transaction documentation.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <span class="exp-company">Newport Group</span>
+        <span class="exp-period">Jul 2017 – Aug 2019</span>
+        <span class="exp-location">Folsom, CA</span>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">
+          Client Services Specialist
+          <span>Previously: Account Services Representative (Jul 2017)</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Managed <strong>300+ monthly retirement plan inquiries</strong>, achieving a 98% satisfaction rate with regulatory-compliant solutions.</li>
+          <li>Applied root cause analysis to redesign payroll and distribution procedures, cutting resolution times by <strong>50%</strong>.</li>
+          <li>Developed KPI tracking frameworks for 50+ retirement plan workflows, identifying bottlenecks that led to a <strong>40% reduction</strong> in inbound call volume.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2>Featured <em>Projects</em></h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- PROJECT 1: Wire Department DMAIC -->
+    <div class="project-card">
+      <div class="project-main">
+        <div class="project-tag-row">
+          <span class="project-tag">Lean Six Sigma</span>
+          <span class="project-tag">DMAIC</span>
+          <span class="project-tag">Process Improvement</span>
+          <span class="project-tag">Financial Services</span>
+        </div>
+        <div class="project-title">Wire Department Process Improvement — DMAIC Initiative</div>
+        <p class="project-desc">
+          Designed and led a full Lean Six Sigma DMAIC proposal targeting systemic inefficiencies in a Commercial Banking wire operations division. The wire department was processing ~310 daily transactions with a 24-minute average cycle time — three times the industry benchmark — and a 3.2% error rate generating over $340K in annual rework costs. Conducted fishbone analysis, 5-Why root cause investigation, Pareto defect analysis, and a full SIPOC mapping exercise to identify and prioritize solutions.
+        </p>
+        <ul class="project-outcomes">
+          <li>Identified <strong>top 3 root causes</strong> accounting for 77% of all defects: data entry errors (38%), missing documentation (22%), and compliance holds (17%)</li>
+          <li>Designed <strong>6 prioritized solutions</strong> including intelligent input automation, risk-tiered dual-control routing, and a digital SOP portal</li>
+          <li>Built comprehensive <strong>Control Plan</strong> with real-time dashboard KPIs, daily stand-up governance, and response plans for each CTQ metric</li>
+          <li>Projected process sigma improvement from <strong>1.52σ → 3.2σ</strong> with a 4-month payback period</li>
+        </ul>
+        <div class="project-tools">
+          <span class="project-tool-tag">Six Sigma DMAIC</span>
+          <span class="project-tool-tag">Fishbone Analysis</span>
+          <span class="project-tool-tag">Pareto Analysis</span>
+          <span class="project-tool-tag">SIPOC Mapping</span>
+          <span class="project-tool-tag">VSM</span>
+          <span class="project-tool-tag">Power BI</span>
+          <span class="project-tool-tag">Excel</span>
+        </div>
+        <div class="project-links">
+          <a href="Wire_Department_Process_Improvement.pptx" download class="project-link-btn primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            View Deck
+          </a>
+          <a href="Wire_Department_Process_Improvement_Proposal.docx" download class="project-link-btn secondary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Full Proposal
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="project-metrics">
+          <div class="proj-metric">
+            <span class="proj-metric-value">45%</span>
+            <span class="proj-metric-label">Cycle Time Reduction</span>
+          </div>
+          <div class="proj-metric">
+            <span class="proj-metric-value">62%</span>
+            <span class="proj-metric-label">Error Rate Decrease</span>
+          </div>
+          <div class="proj-metric">
+            <span class="proj-metric-value">$340K</span>
+            <span class="proj-metric-label">Annual Cost Savings</span>
+          </div>
+          <div class="proj-metric">
+            <span class="proj-metric-value">3.2×</span>
+            <span class="proj-metric-label">Projected ROI</span>
+          </div>
+          <div class="proj-metric">
+            <span class="proj-metric-value">55%</span>
+            <span class="proj-metric-label">Customer Complaints Reduced</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 2: SQL Training Curriculum -->
+    <div class="project-card">
+      <div class="project-main">
+        <div class="project-tag-row">
+          <span class="project-tag">Training &amp; Development</span>
+          <span class="project-tag">SQL</span>
+          <span class="project-tag">Data Analysis</span>
+          <span class="project-tag">Operations</span>
+        </div>
+        <div class="project-title">SQL for Business Analysts — Training Curriculum Design</div>
+        <p class="project-desc">
+          Designed and developed a comprehensive 6-module SQL training curriculum for Operations Services Business Analysts, aligned to W3Schools certification standards. The curriculum was built to close a critical skill gap — enabling BA teams to independently investigate fee errors, validate data quality, and build reporting queries without engineering support. Includes a real-world capstone case study simulating an end-to-end member fee error investigation using live-style transaction data.
+        </p>
+        <ul class="project-outcomes">
+          <li>Built <strong>6 self-contained modules</strong> covering SQL Foundations, Filtering &amp; Pattern Matching, Aggregates, JOINs, Subqueries, and Database Objects &amp; Best Practices</li>
+          <li>Developed a <strong>capstone case study</strong> — member-reported fee error investigation — applying all 8 SQL concepts covered in the curriculum to a realistic banking scenario</li>
+          <li>Applied business context to each module with <strong>BA Application callouts</strong> showing direct use cases in auditing, reconciliation, and root-cause reporting</li>
+          <li>Designed for <strong>non-technical audiences</strong> with example queries, annotated output tables, and practical takeaways for each concept</li>
+        </ul>
+        <div class="project-tools">
+          <span class="project-tool-tag">SQL</span>
+          <span class="project-tool-tag">MS SQL Server</span>
+          <span class="project-tool-tag">W3Schools Certification</span>
+          <span class="project-tool-tag">Curriculum Design</span>
+          <span class="project-tool-tag">PowerPoint</span>
+          <span class="project-tool-tag">Data Quality Auditing</span>
+        </div>
+        <div class="project-links">
+          <a href="SQL_for_Business_Analysts_Training.pptx" download class="project-link-btn primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            View Training Deck
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="project-metrics">
+          <div class="proj-metric">
+            <span class="proj-metric-value">6</span>
+            <span class="proj-metric-label">Training Modules</span>
+          </div>
+          <div class="proj-metric">
+            <span class="proj-metric-value">8</span>
+            <span class="proj-metric-label">SQL Concepts in Case Study</span>
+          </div>
+          <div class="proj-metric">
+            <span class="proj-metric-value">1</span>
+            <span class="proj-metric-label">End-to-End Capstone Investigation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 3: LocalHaul Scrum Simulation -->
+    <div class="project-card">
+      <div class="project-main">
+        <div class="project-tag-row">
+          <span class="project-tag">Scrum Simulation</span>
+          <span class="project-tag">Agile / Sprint</span>
+          <span class="project-tag">Product Development</span>
+          <span class="project-tag">CSM Certification Class</span>
+        </div>
+        <div class="project-title">LocalHaul — Scrum Framework Sprint Simulation</div>
+        <p class="project-desc">
+          As part of the Scrum Alliance Certified ScrumMaster® course led by Peter Saddington, participated in a live multi-sprint simulation building a food delivery app for local stores and shops. Working as a cross-functional team of 4, applied the full Scrum framework end-to-end — from product vision and backlog creation through 3 sprint cycles — practicing real-world Agile delivery under timed sprint conditions.
+        </p>
+        <ul class="project-outcomes">
+          <li>Built a <strong>full Product Backlog (130 story points)</strong> using Affinity Estimation across 5 complexity tiers, covering subscriber login, restaurant browsing, order tracking, driver navigation, and payment flows</li>
+          <li>Ran <strong>3 sprint cycles (15-minute timeboxes)</strong> with Sprint Planning, Daily Scrums, Sprint Reviews, and Retrospectives — fully applying all 4 Scrum ceremonies</li>
+          <li>Authored <strong>user stories in proper format</strong> (As a / I want / So that) with Acceptance Criteria, Definition of Done, and task-level breakdowns on a live Wall of Work</li>
+          <li>Applied <strong>Scrum Values</strong> (Commitment, Courage, Focus, Openness, Respect) across all ceremonies in SM, PO, Dev Team, and Management personas</li>
+          <li>Conducted <strong>Sprint Retrospectives</strong> identifying team improvements each cycle — including better AC detail, swarming on shared tasks, and assigning names to tasks for accountability</li>
+        </ul>
+        <div class="project-tools">
+          <span class="project-tool-tag">Scrum Framework</span>
+          <span class="project-tool-tag">Sprint Planning</span>
+          <span class="project-tool-tag">Product Backlog</span>
+          <span class="project-tool-tag">User Stories</span>
+          <span class="project-tool-tag">Definition of Done</span>
+          <span class="project-tool-tag">Affinity Estimation</span>
+          <span class="project-tool-tag">Retrospectives</span>
+          <span class="project-tool-tag">Release Planning</span>
+        </div>
+        <div class="project-links">
+          <a href="Scrum_Framework_Project.pdf" download class="project-link-btn primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            View Sprint Notes
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="project-metrics">
+          <div class="proj-metric">
+            <span class="proj-metric-value">3</span>
+            <span class="proj-metric-label">Sprint Cycles Completed</span>
+          </div>
+          <div class="proj-metric">
+            <span class="proj-metric-value">130</span>
+            <span class="proj-metric-label">Total Backlog Story Points</span>
+          </div>
+          <div class="proj-metric">
+            <span class="proj-metric-value">4</span>
+            <span class="proj-metric-label">Scrum Ceremonies Practiced</span>
+          </div>
+          <div class="proj-metric">
+            <span class="proj-metric-value">20+</span>
+            <span class="proj-metric-label">User Stories Written</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2>Core <em>Skills</em></h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">Analytics &amp; Data</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">MS SQL Server</span>
+        <span class="skill-tag">Advanced Excel</span>
+        <span class="skill-tag">KPI Development</span>
+        <span class="skill-tag">Data Validation</span>
+        <span class="skill-tag">Dashboard Design</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Process &amp; Operations</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Six Sigma (DMAIC)</span>
+        <span class="skill-tag">Root Cause Analysis</span>
+        <span class="skill-tag">Process Mapping</span>
+        <span class="skill-tag">SOP Development</span>
+        <span class="skill-tag">Workflow Automation</span>
+        <span class="skill-tag">UAT Management</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Tools &amp; Platforms</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Jira</span>
+        <span class="skill-tag">Confluence</span>
+        <span class="skill-tag">ServiceNow</span>
+        <span class="skill-tag">Salesforce</span>
+        <span class="skill-tag">Trello</span>
+        <span class="skill-tag">MS Office Suite</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Methodologies</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Agile / Scrum</span>
+        <span class="skill-tag">Business Requirements</span>
+        <span class="skill-tag">User Story Writing</span>
+        <span class="skill-tag">Defect Lifecycle Mgmt</span>
+        <span class="skill-tag">Cross-Functional Leadership</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Domain Expertise</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Mortgage Operations</span>
+        <span class="skill-tag">Compliance &amp; Regulatory</span>
+        <span class="skill-tag">Retail Banking</span>
+        <span class="skill-tag">Retirement Plans</span>
+        <span class="skill-tag">Fintech</span>
+        <span class="skill-tag">Loan Lifecycle</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section id="credentials">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <h2>Education &amp; <em>Credentials</em></h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="certs-row">
+
+    <!-- CSM -->
+    <div class="cert-card">
+      <div class="cert-badge-img">
+        <img src="badge-7227.png" alt="Certified Scrum Master Badge" />
+      </div>
+      <div class="cert-info">
+        <div class="cert-name">Certified ScrumMaster®</div>
+        <div class="cert-org">Scrum Alliance</div>
+        <div class="cert-meta">Issued Feb 16, 2025 &nbsp;·&nbsp; Active through Feb 2027</div>
+        <div class="cert-id">ID: 001731928</div>
+        <div class="cert-actions">
+          <a href="CSM_Certificate.pdf" download class="cert-btn cert-btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Certificate
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Six Sigma -->
+    <div class="cert-card">
+      <div class="cert-badge-icon">◈</div>
+      <div class="cert-info">
+        <div class="cert-name">Six Sigma Green Belt</div>
+        <div class="cert-org">Council for Six Sigma Certification</div>
+        <div class="cert-meta">Issued Jan 23, 2025</div>
+        <div class="cert-id">Cert No: 4CZAVhPkSk</div>
+        <div class="cert-actions">
+          <a href="Six_Sigma_Green_Belt_Certification.pdf" download class="cert-btn cert-btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Certificate
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- W3Schools SQL -->
+    <div class="cert-card">
+      <div class="cert-badge-icon" style="color: #3a8e3a;">⬡</div>
+      <div class="cert-info">
+        <div class="cert-name">Certified SQL Developer <span class="cert-level-badge">Advanced</span></div>
+        <div class="cert-org">W3Schools</div>
+        <div class="cert-meta">Issued Jul 7, 2024</div>
+        <div class="cert-actions">
+          <a href="certificate_of_completion_sql.pdf" download class="cert-btn cert-btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Certificate
+          </a>
+          <a href="https://verify.w3schools.com/1OZAIJQTPX" target="_blank" class="cert-btn cert-btn-ghost">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Verify
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Franklin Covey -->
+    <div class="cert-card">
+      <div class="cert-badge-icon" style="color: #c9a84c;">✦</div>
+      <div class="cert-info">
+        <div class="cert-name">FranklinCovey Certification</div>
+        <div class="cert-org">FranklinCovey</div>
+        <div class="cert-actions">
+          <a href="https://app.franklincovey.com/certificate/5b3d154e-ce07-4ab9-8151-a43b7fe1ef41/" target="_blank" class="cert-btn cert-btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            View Certificate
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ASU -->
+    <div class="cert-card">
+      <div class="cert-badge-icon">○</div>
+      <div class="cert-info">
+        <div class="cert-name">Bachelor's — Business Communications</div>
+        <div class="cert-org">Arizona State University</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-num">06</span>
+    <h2>Let's <em>Connect</em></h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="contact-inner">
+    <div class="contact-headline">
+      Open to new opportunities in fintech, banking, and operations.
+    </div>
+    <div class="contact-links">
+      <a href="/cdn-cgi/l/email-protection#5c3d2a3d32352f35323b346e681c3b313d3530723f3331" class="contact-link">
+        <div class="contact-link-icon">@</div>
+        <span class="__cf_email__" data-cfemail="78190e1916110b11161f104a4c381f15191114561b1715">[email&#160;protected]</span>
+      </a>
+      <a href="tel:9168177796" class="contact-link">
+        <div class="contact-link-icon">✆</div>
+        916-817-7796
+      </a>
+      <a href="https://www.linkedin.com/in/avanisingh95/" target="_blank" class="contact-link">
+        <div class="contact-link-icon">in</div>
+        linkedin.com/in/avanisingh95
+      </a>
+      <a href="#" class="contact-link">
+        <div class="contact-link-icon">◎</div>
+        Sacramento, CA
+      
